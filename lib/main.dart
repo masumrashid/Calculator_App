@@ -38,18 +38,18 @@ class _HomeState extends State<Home> {
   void buttonPress(String value){
     setState(() {
       if(value =='C'){
-        String _output = '0';
-        String _input = '';
-        String _operated = '';
-        double _num1 = 0;
-        double _num2 = 0;
+        _output = '0';
+        _input = '';
+        _operated = '';
+        _num1 = 0;
+        _num2 = 0;
       }else if(value=='='){
         _num2 = double.parse(_input);
         if(_operated == '+'){
           _output = (_num1 + _num2).toString();
         }else if(_operated == '-'){
           _output = (_num1 - _num2).toString();
-        }else if(_operated == 'X'){
+        }else if(_operated == '*'){
           _output = (_num1 * _num2).toString();
         }else if(_operated == '/'){
           _output = (_num2 !=0) ? (_num1 / _num2).toString():'Error';
@@ -57,6 +57,11 @@ class _HomeState extends State<Home> {
         _input = _output;
       }else if(['+', '-','*', '/'].contains(value)){
         _num1 = double.parse(_input);
+        _operated = value;
+        _input = '';
+      }else{
+        _input = value;
+        _output = _input;
       }
     });
   }
@@ -87,34 +92,34 @@ class _HomeState extends State<Home> {
           ),
           Row(
             children: [
-              BuildButton(text: '7', color: null,),
-              BuildButton(text: '8', color: null,),
-              BuildButton(text: '9', color: null,),
-              BuildButton(text: '/', color: Colors.orange,),
+              BuildButton(text: '7', onClick: () => buttonPress('7') ,),
+              BuildButton(text: '8', onClick: () => buttonPress('8'),),
+              BuildButton(text: '9', onClick: () => buttonPress('9')),
+              BuildButton(text: '/', color: Colors.orange,onClick: () => buttonPress('/')),
             ],
           ),
           Row(
             children: [
-              BuildButton(text: '4', color: null,),
-              BuildButton(text: '5', color: null,),
-              BuildButton(text: '6', color: null,),
-              BuildButton(text: 'X', color: Colors.orange,),
+              BuildButton(text: '4',onClick: () => buttonPress('4')),
+              BuildButton(text: '5',onClick: () => buttonPress('5')),
+              BuildButton(text: '6', onClick: () => buttonPress('6')),
+              BuildButton(text: 'X', color: Colors.orange,onClick: () => buttonPress('*')),
             ],
           ),
           Row(
             children: [
-              BuildButton(text: '1', color: null,),
-              BuildButton(text: '2', color: null,),
-              BuildButton(text: '3', color: null,),
-              BuildButton(text: '-', color: Colors.orange,),
+              BuildButton(text: '1',onClick: () => buttonPress('1')),
+              BuildButton(text: '2',onClick: () => buttonPress('2')),
+              BuildButton(text: '3',onClick: () => buttonPress('3')),
+              BuildButton(text: '-', color: Colors.orange,onClick: () => buttonPress('-')),
             ],
           ),
           Row(
             children: [
-              BuildButton(text: 'C', color: Colors.red,),
-              BuildButton(text: '0', color: null,),
-              BuildButton(text: '=', color: Colors.green,),
-              BuildButton(text: '+', color: Colors.orange,),
+              BuildButton(text: 'C', color: Colors.red,onClick: () => buttonPress('C')),
+              BuildButton(text: '0',onClick: () => buttonPress('0')),
+              BuildButton(text: '=', color: Colors.green,onClick: () => buttonPress('=')),
+              BuildButton(text: '+', color: Colors.orange,onClick: () => buttonPress('+')),
             ],
           ),
 

@@ -3,10 +3,12 @@ import 'package:flutter/material.dart';
 class BuildButton extends StatelessWidget {
   String text;
   Color? color;
+  final VoidCallback onClick;
   BuildButton({
     super.key,
     required this.text,
-    required this.color
+     this.color,
+    required this.onClick,
   });
 
   @override
@@ -15,7 +17,7 @@ class BuildButton extends StatelessWidget {
       child: Padding(
         padding: const EdgeInsets.all(8.0),
         child: ElevatedButton(
-            onPressed: () {},
+            onPressed: onClick,
             style: ElevatedButton.styleFrom(
                 padding: EdgeInsets.all(24),
                 backgroundColor: color ?? Colors.grey[850],
