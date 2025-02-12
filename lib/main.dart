@@ -35,6 +35,34 @@ class _HomeState extends State<Home> {
   double _num1 = 0;
   double _num2 = 0;
 
+  void buttonPress(String value){
+    setState(() {
+      if(value =='C'){
+        String _output = '0';
+        String _input = '';
+        String _operated = '';
+        double _num1 = 0;
+        double _num2 = 0;
+      }else if(value=='='){
+        _num2 = double.parse(_input);
+        if(_operated == '+'){
+          _output = (_num1 + _num2).toString();
+        }else if(_operated == '-'){
+          _output = (_num1 - _num2).toString();
+        }else if(_operated == 'X'){
+          _output = (_num1 * _num2).toString();
+        }else if(_operated == '/'){
+          _output = (_num2 !=0) ? (_num1 / _num2).toString():'Error';
+        }
+        _input = _output;
+      }else if(['+', '-','*', '/'].contains(value)){
+        _num1 = double.parse(_input);
+      }
+    });
+  }
+
+
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
