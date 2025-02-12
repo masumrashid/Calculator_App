@@ -60,7 +60,7 @@ class _HomeState extends State<Home> {
         _operated = value;
         _input = '';
       }else{
-        _input = value;
+        _input += value;
         _output = _input;
       }
     });
