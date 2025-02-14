@@ -31,7 +31,7 @@ class Home extends StatefulWidget {
 class _HomeState extends State<Home> {
   String _output = '0';
   String _input = '';
-  String _operated = '';
+  String operand = '';
   double _num1 = 0;
   double _num2 = 0;
 
@@ -40,24 +40,24 @@ class _HomeState extends State<Home> {
       if(value =='C'){
         _output = '0';
         _input = '';
-        _operated = '';
+        operand = '';
         _num1 = 0;
         _num2 = 0;
       }else if(value=='='){
         _num2 = double.parse(_input);
-        if(_operated == '+'){
+        if(operand == '+'){
           _output = (_num1 + _num2).toString();
-        }else if(_operated == '-'){
+        }else if(operand == '-'){
           _output = (_num1 - _num2).toString();
-        }else if(_operated == '*'){
+        }else if(operand == '*'){
           _output = (_num1 * _num2).toString();
-        }else if(_operated == '/'){
+        }else if(operand == '/'){
           _output = (_num2 !=0) ? (_num1 / _num2).toString():'Error';
         }
         _input = _output;
       }else if(['+', '-','*', '/'].contains(value)){
         _num1 = double.parse(_input);
-        _operated = value;
+        operand = value;
         _input = '';
       }else{
         _input += value;
